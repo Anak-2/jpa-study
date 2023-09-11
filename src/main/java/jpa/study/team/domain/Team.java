@@ -9,14 +9,9 @@ import lombok.Data;
 @Entity
 @Data
 public class Team {
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
+    String name;
 }
