@@ -23,7 +23,7 @@ public class InitDb {
     @Transactional
     @EventListener(ApplicationReadyEvent.class)
     public void insert(){
-        Team team = new Team();
+        Team team = Team.builder().build();
         team.setName("teamA");
         em.persist(team);
 

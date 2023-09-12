@@ -18,6 +18,6 @@ public class TeamServiceImpl implements TeamService{
 
     @Override
     public List<Member> getMembers(Team team) {
-        return memberRepository.findMEmbersByTeam(team);
+        return memberRepository.findMembersByTeam(team);
     }
 }
