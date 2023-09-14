@@ -1,5 +1,6 @@
 package jpa.study.member.repository;
 
+import jpa.study.lecture.domain.Lecture;
 import jpa.study.member.domain.Member;
 import jpa.study.team.domain.Team;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -22,4 +22,6 @@ public class Member {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="team_id")
     Team team;
+
+
 }
