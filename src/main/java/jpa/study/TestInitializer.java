@@ -9,6 +9,7 @@ import jpa.study.memberLecture.MemberLecture;
 import jpa.study.memberLecture.MemberLectureRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,7 +25,6 @@ public class TestInitializer {
 
     @PostConstruct
     public void init(){
-
         String[] lectureNames = new String[]{"소프트웨어공학","시스템프로그래밍","웹시스템설계"};
         List<Lecture> lectures = new ArrayList<>();
         Arrays.stream(lectureNames).forEach(name -> {
@@ -36,7 +36,7 @@ public class TestInitializer {
         Member member1 = makeMember("member1");
         memberService.saveMember(member1);
 
-        lectures.stream().forEach(lecture -> {
+        lectures.forEach(lecture -> {
             memberLectureRepository.save(makeMemberLecture(member1, lecture));
         });
     }

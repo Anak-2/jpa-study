@@ -20,4 +20,5 @@ public class TeamServiceImpl implements TeamService{
     public List<Member> getMembers(Team team) {
         return memberRepository.findMembersByTeam(team);
     }
+
 }

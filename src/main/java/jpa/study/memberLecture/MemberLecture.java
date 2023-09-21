@@ -3,10 +3,8 @@ package jpa.study.memberLecture;
 import jakarta.persistence.*;
 import jpa.study.lecture.domain.Lecture;
 import jpa.study.member.domain.Member;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
 @Data
@@ -20,9 +18,12 @@ public class MemberLecture {
 
     @ManyToOne
     @JoinColumn(name = "member_id")
+    @NonNull
     private Member member;
 
     @ManyToOne
     @JoinColumn(name = "lecture_id")
+    @NonNull
     private Lecture lecture;
+
 }

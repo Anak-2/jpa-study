@@ -1,9 +1,11 @@
 package jpa.study.jpa_study.service;
 
+import jakarta.persistence.EntityManager;
 import jpa.study.TestInitializer;
 import jpa.study.lecture.domain.Lecture;
 import jpa.study.member.domain.Member;
 import jpa.study.member.service.MemberService;
+import jpa.study.lecture.service.LectureService;
 import jpa.study.memberLecture.MemberLectureRepository;
 import jpa.study.team.domain.Team;
 import lombok.extern.slf4j.Slf4j;
@@ -23,9 +25,13 @@ public class MemberServiceTest {
     @Autowired
     MemberService memberService;
     @Autowired
+    LectureService lectureService;
+    @Autowired
     MemberLectureRepository memberLectureRepository;
     @Autowired
     TestInitializer testInitializer;
+    @Autowired
+    EntityManager em;
 
     @Test
     @DisplayName("멤버 등록")
@@ -50,7 +56,7 @@ public class MemberServiceTest {
     @Transactional
     void find_lectures(){
         //given
-        testInitializer.init();
+//        testInitializer.init();
         Member member = memberService.getMembers().get(0);
         //when
         List<Lecture> lectures = memberService.getLecturesByMember(member);
@@ -59,4 +65,22 @@ public class MemberServiceTest {
         lectures.forEach(System.out::println);
     }
 
+    @Test
+    @DisplayName("멤버의 수강 목록 조회, 수강 취소")
+    @Transactional
+    void drop_lecture(){
+        //given
+//        testInitializer.init();
+        Member member = memberService.getMembers().get(0);
+        Lecture lecture = lectureService.getLectures().get(0);
+        List<Lecture> lectures = memberService.getLecturesByMember(member);
+        System.out.println("***** 출력 *****");
+        lectures.forEach(l -> {
+            log.info(l.getName());
+        });
+        //when
+        memberService.dropLecture(lecture, member);
+        //then
+        Assertions.assertEquals(memberService.getLecturesByMember(member).size(),2);
+    }
 }

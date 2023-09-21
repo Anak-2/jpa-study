@@ -1,0 +1,23 @@
+<Domain>
+
+Member
+- Lecture 등록 가능
+- Lecture 리스트 조회 가능
+- Lecture 삭제 가능
+- Team 등록 가능
+- Team 삭제 가능
+- Lokcer 등록 가능
+- Locker 삭제 가능
+
+Lecture
+- Member 리스트 조회 가능
+- Member 추가, 삭제 가능
+
+Locker
+- Member 조회 가능
+- Member 삭제 가능
+- Member의 사용 기간 연장, 단축 가능 ⭐
+
+Team
+- Member 리스트 조회 가능
+- 각 Member 가입 날짜 확인 가능 ⭐

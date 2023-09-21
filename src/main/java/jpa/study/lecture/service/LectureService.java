@@ -7,7 +7,14 @@ import java.util.List;
 
 public interface LectureService {
 
+    Lecture saveLecture(Lecture lecture);
+
+    List<Lecture> getLectures();
+
+    Lecture findLectureByName(String name);
+
+//    Member Domain
     List<Member> getMembers(Lecture lecture);
 
-    Lecture saveLecture(Lecture lecture);
+    void dropMember(Lecture lecture, Member member);
 }
