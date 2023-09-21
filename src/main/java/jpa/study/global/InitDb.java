@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.crypto.MacSpi;
 
+@Deprecated
 @Component
 @Transactional
 @RequiredArgsConstructor
@@ -21,7 +22,7 @@ public class InitDb {
     private final EntityManager em;
 
     @Transactional
-    @EventListener(ApplicationReadyEvent.class)
+//    @EventListener(ApplicationReadyEvent.class)
     public void insert(){
         Team team = Team.builder().build();
         team.setName("teamA");

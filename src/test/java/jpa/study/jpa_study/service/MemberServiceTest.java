@@ -70,17 +70,18 @@ public class MemberServiceTest {
     @Transactional
     void drop_lecture(){
         //given
-//        testInitializer.init();
-        Member member = memberService.getMembers().get(0);
-        Lecture lecture = lectureService.getLectures().get(0);
-        List<Lecture> lectures = memberService.getLecturesByMember(member);
+        testInitializer.init();
+        List<Member> members = memberService.getMembers();
+        members.forEach(m->log.info(m.getName()));
+        List<Lecture> lecture = lectureService.getLectures();
+        List<Lecture> lectures = memberService.getLecturesByMember(members.get(0));
         System.out.println("***** 출력 *****");
         lectures.forEach(l -> {
             log.info(l.getName());
         });
         //when
-        memberService.dropLecture(lecture, member);
+        memberService.dropLecture(lecture.get(0), members.get(0));
         //then
-        Assertions.assertEquals(memberService.getLecturesByMember(member).size(),2);
+        Assertions.assertEquals(memberService.getLecturesByMember(members.get(0)).size(),2);
     }
 }
