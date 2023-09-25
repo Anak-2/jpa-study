@@ -2,22 +2,17 @@ package jpa.study.member.domain;
 
 import jakarta.persistence.*;
 import jpa.study.team.domain.Team;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
+@Getter
 @Entity
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class Member {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="member_id")
     private Long id;
 
     private String name;
@@ -29,4 +24,14 @@ public class Member {
 
     @CreationTimestamp
     private LocalDateTime createTime;
+
+    protected Member() {
+    }
+
+    @Builder
+    private Member(String name, Team team, LocalDateTime createTime) {
+        this.name = name;
+        this.team = team;
+        this.createTime = createTime;
+    }
 }

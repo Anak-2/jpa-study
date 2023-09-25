@@ -1,25 +1,25 @@
 package jpa.study.team.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 // Team is similar with School Club
 @Entity
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
 public class Team {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    @Column(name="team_id")
+    private Long id;
 
     String name;
+
+    protected Team() {
+    }
+
+    @Builder
+    private Team(String name) {
+        this.name = name;
+    }
 }
