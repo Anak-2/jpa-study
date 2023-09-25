@@ -40,7 +40,7 @@ public class MemberServiceTest {
         //given
         Member member = Member.builder()
                 .name("memberA")
-                .team(new Team())
+                .team(Team.builder().build())
                 .build();
 
         //when
@@ -70,7 +70,6 @@ public class MemberServiceTest {
     @Transactional
     void drop_lecture(){
         //given
-        testInitializer.init();
         List<Member> members = memberService.getMembers();
         members.forEach(m->log.info(m.getName()));
         List<Lecture> lecture = lectureService.getLectures();
